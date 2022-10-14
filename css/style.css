@@ -125,13 +125,25 @@ article.destaque {
     overflow: hidden;
 }
 
-article.destaque:hover {
-    transition: all 1s; 
-    background: linear-gradient(20deg, rgba(255, 255, 255, 0.507), rgba(0, 0, 0, 0.548));
+article.destaque a {
+    position: relative;
+    border: 1px solid red;
 }
 
 article.destaque:hover img {
-    opacity: 0.7;
+    transition: transform 0.5s;
+    transition-timing-function: ease-in-out; 
+    transform: scale(1.1, 1.1);
+
+    -webkit-filter: sepia(80%);
+    filter: brightness(80%);
+}
+
+article.destaque .titulo-destaque {
+    text-decoration: none;
+    padding: 10px;
+    position: relative;
+    border: 1px solid red;
 }
 
 /*Botão mobile*/
