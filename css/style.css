@@ -5,7 +5,7 @@
 
 body {
     font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
-    background-color: #EEE;
+    background-color: #eee;
     color: #404040;
     font-size: 1rem;
     line-height: 1.5;
@@ -17,20 +17,27 @@ h1 {
     font-weight: 540;
 }
 
+/*No título de populares*/
 h2 {
-    font-size: 1.9em;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    font-size: 1.5em;
+    font-weight: 600;
+    display: inline-block;
+    border-bottom: 1px solid #404040;
 }
 
+/*Título dos artigos em populares*/
 h3 {
-    text-transform: uppercase;
-    font-size: 1.6em;
+    font-size: 1.2em;
     font-weight: 600;
-    padding: 10px 0px;
-    border-bottom: 1px solid #404040;
-    display: inline-block;
+    padding: 5px 0px;
+}
 
+/*Título da lateral*/
+h4 {
+    font-size: 1.2em;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: #f79d33;
 }
 
 h5 {
@@ -42,6 +49,11 @@ h5 {
 ul {
     list-style: none;
 } 
+
+a {
+    text-decoration: none;
+    color: #404040;
+}
 
 /*Cabeçalho*/
 header#cabecalho {
@@ -80,7 +92,7 @@ nav#navbar {
 
 /*Alinhamento do menu*/
 nav#navbar ul#menu {
-    font-family: "Muli",Helvetica,Arial,sans-serif;
+    font-family: "Muli", Helvetica, Arial, sans-serif;
     font-size: 0.91em;
     letter-spacing: 0.84px;
     display: flex;
@@ -90,61 +102,117 @@ nav#navbar ul#menu {
 /*Formatação dos links do menu*/
 nav#navbar ul#menu a:link, nav#navbar ul#menu a:visited {
     color: white;
-    text-decoration: none;
     padding: 15px;
 }
 
-body#index {
+.light-container {
     background-color: white;
-}
-
-/*Container*/
-#container-principal {
-    width: 1130px;
-    margin: 30px auto;
-
-    background-color: #191919;
 }
 
 /*Layout da seção destaques*/
 section#destaques {
     display: grid;
-    grid-template-columns: auto auto auto;
-    grid-gap: 20px;
-    
-    
-    background-color: white;
 }
 
-article.destaque {
-    width: 350px;
-
-    border-radius: 5px;
-
-    box-sizing: border-box;
+/*Bloco de Destaques*/
+a.destaque {
+    /*Efeito de zoom*/
     overflow: hidden;
-}
 
-article.destaque a {
+    /*Para fazer o posicinamento do titulo de destaque*/
     position: relative;
-    border: 1px solid red;
+    
+    /*Para responsividade*/
+    width: 100%;
+
+    background-color: #9a9a9a;
 }
 
-article.destaque:hover img {
-    transition: transform 0.5s;
-    transition-timing-function: ease-in-out; 
-    transform: scale(1.1, 1.1);
+/*Fazer imagem ocupar todo o espaçamento do bloco*/
+a.destaque img {
+    width: 100%;
+    transform: scale(1.1);
 
-    -webkit-filter: sepia(80%);
-    filter: brightness(80%);
+    -webkit-filter: sepia(90%);
+    filter: brightness(90%);
 }
 
-article.destaque .titulo-destaque {
-    text-decoration: none;
-    padding: 10px;
-    position: relative;
-    border: 1px solid red;
+.titulo-destaque {
+    color: white;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-shadow: 1px 1px 5px black;
+    letter-spacing: 0.5px;
+    
+    /*Posicionamento do texto*/
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+
+    padding: 18px;
 }
+
+/*Barrinha de titulo*/
+.titulo {
+    display: block;
+    border-bottom: 1px solid #dadada;
+
+    margin-bottom: 20px;
+}
+
+a.card-populares {
+    width: 100%;
+    display: flex;
+
+    background-color: #fff;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+
+    margin-bottom: 30px;
+}
+
+/*Artigos dentro do card*/
+a.card-populares article {
+    padding: 10px 20px;
+    background-color: white;
+    z-index: 4;
+}
+
+/*Tamanho da letra*/
+a.card-populares article p {
+    font-size: 0.9em;
+}
+
+/*Layout da lateral*/
+aside#ultimos {
+    background-color: white;
+    border: 5px solid #FDE4C6;
+    
+    padding: 15px 20px;
+    box-sizing: border-box;
+}
+
+/*Artigos dentro do lateral*/
+aside#ultimos article {
+    margin-top: 20px;
+    border-bottom: 1px solid #dadada;
+}
+
+/*Links da lateral*/
+aside#ultimos article a {
+    font-weight: 600;
+}
+
+aside#ultimos article a:hover {
+    text-decoration: underline;
+}
+
+/*Parágrafos da lateral*/
+aside#ultimos article p {
+    font-size: 0.8em;
+    margin-top: 10px;
+    margin-bottom: 35px;
+}
+
 
 /*Botão mobile*/
 @media (max-width: 991.98px) {
@@ -293,12 +361,46 @@ article.destaque .titulo-destaque {
 
 /* Telas que tenham até 569.98px. */
 @media (max-width: 569.98px) {
-
+    a.card-populares {
+        display: block;
+    }
+    
+    a.card-populares img {
+        width: 100%;
+    }
 }
 
 /* Telas que tenham de 570px até 991.98px. */
 @media (min-width: 570px) and (max-width: 991.98px) {
+    
+    /*Layout da seção destaques*/
+    section#destaques {
+        grid-template-columns: auto auto;
+        justify-items: center;
+    }
 
+    /*Imagens dentro do card*/
+    a.card-populares img {
+        max-width: 200px;
+    }
+
+    /*Espaçamento do container*/
+    .container-secundario {
+        margin: 40px 10px;
+    }
+
+    /*Tamanho do texto do título*/
+    section#populares .titulo {
+        font-size: 0.7em;
+    }
+
+    /*Container para organizar artigos*/
+    .container-artigos {
+        display: grid;
+        grid-template-columns: 49% 49%;
+        gap: 0px 30px;
+        justify-content: center;
+    }
 }
 
 /*Telas de 992px pra mais*/
@@ -349,10 +451,8 @@ article.destaque .titulo-destaque {
         
         border-radius: 2px;
         outline: none;
-    }
 
-    /*Alterar cor da lupa em foco*/
-    input#busca:focus {
+        /*Alterar cor da lupa em foco*/
         background-image: url(../img/lupa.svg);
     }
 
@@ -376,8 +476,82 @@ article.destaque .titulo-destaque {
         color: white;
         transition: all 0.9s;
     }
+
+    /*Container*/
+    .container-principal, .container-secundario {
+        margin: 0px auto;
+        padding: 30px 0;
+        max-width: 1000px;
+    }
+
+    /*Layout da seção destaques*/
+    section#destaques {
+        grid-template-columns: auto auto auto;
+        justify-items: center;
+        column-gap: 30px;
+        row-gap: 30px;
+    }
+
+    /*Bloco de Destaques*/
+    a.destaque {
+        border-radius: 3px;
+    }
+
+    /*Efeito de zoom e escurecer em imagens*/
+    a.destaque:hover img, a.card-populares:hover img {
+        transition: transform 0.5s;
+        transition-timing-function: ease-in-out; 
+        transform: scale(1.2);
+    
+        -webkit-filter: sepia(80%);
+        filter: brightness(80%);
+    }
+
+    .container-secundario {
+        width: calc(100% - 20px);
+        margin: auto;
+    }
+
+    section#populares .titulo {
+        font-size: 0.9em;
+    }
+
+    /*Layout da seção populares*/
+    section#populares {
+        width: 65%;
+        float: left;
+        margin-right: 30px;
+    }
+
+    /*Para o efeito de zoom*/
+    a.card-populares {
+        overflow: hidden;
+        margin-bottom: 30px;
+    }
+
+    /*Imagens dentro do card*/
+    a.card-populares img {
+        width: 30%;
+        max-width: 200px;
+        transform: scale(1.1);
+        z-index: 2;
+    }
+
+    /*Layout da lateral*/
+    aside#ultimos {
+        width: calc(35% - 30px);
+        float: right;
+    }
 }
 
-/*Tela maiores que 1024 pixels*/
-@media (min-width: 1024px) {
+/*Tela maiores que 1124 pixels*/
+@media (min-width: 1124px) {
+    /*Limitar container*/
+    .container-principal, .container-secundario {
+        max-width: 1124px;
+    }
+}
+
+@media (min-width: 1280px) {
+
 }
